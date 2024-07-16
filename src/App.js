@@ -9,27 +9,23 @@ import Summary from "./Summary";
 function App() {
   return (
     <div>
-      {window.location.pathname === '/login'? (
-        <Navbar />
-      )
-       :
-        (
-        <MovieTicket />
+     { window.location.pathname === '/login'?
+      (
+        <Navbar/>
+      ):
+      (
+        <MovieTicket/>
       )}
-      (
-        <BookTickets />
-
-      )
-      (
-        <Time/>
+      {/* (
+        <BookTickets/>
       )
       (
         <Seats/>
       )
       (
         <Summary/>
-      )
-      
+      ) */}
+    
     </div>
   );
 }

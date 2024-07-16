@@ -1,11 +1,57 @@
 import React from 'react';
-import './style.css'; 
+
 import kangDanielImage from './KANG DANIEL.jpeg'; 
+import  { useState } from 'react';
+import axios from 'axios';
+import './style.css'; 
+import MovieTicket from './MovieTicket';
 
 
 
 
-function LoginPage() {
+const LoginPage = () => {
+
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [registrationStatus, setRegistrationStatus] = useState(null);
+  const [errorMessage, setErrorMessage] = useState(null);
+
+  const handleUsernameChange = (event) => {
+    setUsername(event.target.value);
+  };
+
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
+  };
+
+  const handleConfirmPasswordChange = (event) => {
+    setConfirmPassword(event.target.value);
+  };
+
+  const handleRegisterClick = async () => {
+    try {
+      const response = await axios.post('/api/register', {
+        username,
+        password,
+        confirmPassword,
+      });
+
+      setRegistrationStatus('success');
+      console.log('Registration successful!', response.data);
+    } catch (error) {
+      setRegistrationStatus('error');
+      console.error('Failed to register:', error.response.data);
+    }
+  };
+
+  let statusMessage = null;
+  if (registrationStatus === 'success') {
+    statusMessage = <div>Registration successful! Please check your email to verify your account.</div>;
+  } else if (registrationStatus === 'error') {
+    statusMessage = <div style={{ color: 'black' }}>Registration Unsuccessful</div>; 
+  }
+
   return (
     <>
       <nav>
@@ -50,17 +96,51 @@ function LoginPage() {
         </div>
         <span>
           <button className="sign-btn">Sign Up</button>
-        </span>
-      </nav>
-      <div className="email">
-        <div>Enter valid Email</div>
-        <div>
-          <input id="mail" type="email" placeholder="email" />
-        </div>
-        <button>Send OTP</button>
-      </div></>
+        </span> </nav>
+      
+   
+  
+
+  
+    <div class="idk">
+      <div class="username">
+        <span>Username</span>
+      <input
+        class="sign-up"
+        type="text"
+        value={username}
+        onChange={handleUsernameChange}
+        placeholder="Enter your username"
+      /></div>
+
+      <div class="passwordd">
+      <span>Password</span>
+      <input
+         class="sign-up"
+        type="password"
+        value={password}
+        onChange={handlePasswordChange}
+        placeholder="Enter your password"
+      /></div>
+      <div  class="confirm">
+
+      <span>Confirm Password</span>
+      <input
+       class="sign-up"
+        type="password"
+        value={confirmPassword}
+        onChange={handleConfirmPasswordChange}
+        placeholder="Confirm your password"
+      /></div>
+      <div>
+      <button  onClick={handleRegisterClick} className='register'>Register</button>
+      {statusMessage}
+      </div></div>
     
-  );
-}
+   
+    </>
+    
+            );  
+};
 
 export default LoginPage;
