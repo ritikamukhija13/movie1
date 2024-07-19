@@ -43,9 +43,3 @@ export async function login(username,password){
 
 //TO Run this file in terminal run command - node login.js
 
-//To see the DB use this link
-//https://cloud.mongodb.com/v2/663dbf59aa220f1f101eedf2#/metrics/replicaSet/6645ea2f5219de6bad1288cf/explorer/OPA/BookingApp/find
-//Try to modify data and then see the response for better understanding
-//MongoDB mein login krna hoga then use this link
-//email - sinhaneha570@gmail.com
-//password - rj07ca1720@N
