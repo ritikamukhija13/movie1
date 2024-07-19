@@ -67,8 +67,3 @@ console.log(await SignUp('Rishi','2626','2626'))
 
 //TO Run this file in terminal run command - node signUp.js
 
-//To see the DB use this link
-//https://cloud.mongodb.com/v2/663dbf59aa220f1f101eedf2#/metrics/replicaSet/6645ea2f5219de6bad1288cf/explorer/OPA/BookingApp/find
-//MongoDB mein login krna hoga then use this link
-//email - sinhaneha570@gmail.com
-//password - rj07ca1720@N
